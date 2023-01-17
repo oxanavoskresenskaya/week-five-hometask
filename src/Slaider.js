@@ -25,7 +25,7 @@ function Slaider ({slaide}) {
     return (
         <div className="container-slaider" >
             <button onClick={previousImage} className='btn-slaider'><img src={arrowBack} alt='arrow'/></button>
-            <img src={slaide[picture]} alt='Rostov-on-Don' width='500px'/>
+            <img src={slaide[picture]} alt='Rostov-on-Don' className="image-seesights"/>
             <button onClick={nextImage} className='btn-slaider'><img src={arrowNext} alt='arrow'/></button>
         </div>
     )
