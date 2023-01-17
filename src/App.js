@@ -1,18 +1,24 @@
 import { useState } from 'react';
 import { data } from './data';
 import './App.css';
-import { identifier } from '@babel/types';
+import Slaider from './Slaider';
 
 function App() {
   const [seesights, setSeesights] = useState(data);
   const [showText, setShowText] = useState(false);
+  
   const showTextClick = (item) => {
     item.showMore = !item.showMore;
     setShowText (!showText);
+  };
+  
+  const deliteSeesight = (id)=>{
+    let newSeesights = seesights.filter(el => el.id!==id);
+    setSeesights (newSeesights);
   }
   return (
     <div>
-      <div className='conteiner'>
+      <div className='container'>
         <h1>{seesights.length} главных достопримечательностей города Ростова-на-Дону</h1>
       </div>
       {seesights.map((item => {
@@ -23,16 +29,25 @@ function App() {
               <h2>{attractionName}</h2>
             </div>
             <div className='container'>
-              <img src={image} width='500px' alt='seesight'/>
+                <Slaider slaide = {image}/>
             </div>
             <div className='container'>
               <p>{showMore ? description : description.substring(0, 200)+'...'}
-              <button onClick={()=>showTextClick(item)}>{showMore ? 'Скрыть ' : 'Показать полностью'}</button>
+              <button className='showBtn' onClick={()=>showTextClick(item)}>{showMore ? 'Скрыть ' : 'Показать полностью'}</button>
               </p>
+            </div>
+            <div className='container'>
+              <p><span>Адрес:</span> {adress}</p>
+            </div>
+            <div className='container'>
+              <button className='btn' onClick={()=>deliteSeesight(id)}>Уже посмотрел</button>
             </div>
           </div>
         )
       }))}
+        <div className='container'>
+          <button className='btn' onClick={() => setSeesights([])}>Всё видел, спасибо!</button>
+        </div>
     </div>
   );
 }
