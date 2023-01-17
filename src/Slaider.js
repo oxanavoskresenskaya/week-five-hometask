@@ -11,8 +11,8 @@ function Slaider ({slaide}) {
             return slaide.length - 1;
            } 
            return item;
-        })
-    }
+        });
+    };
     const nextImage = () =>{
         setPicture((item)=>{
             item ++;
@@ -21,7 +21,7 @@ function Slaider ({slaide}) {
                 }
                 return item;
         });
-    }
+    };
     return (
         <div className="container-slaider" >
             <button onClick={previousImage} className='btn-slaider'><img src={arrowBack} alt='arrow'/></button>
@@ -30,4 +30,5 @@ function Slaider ({slaide}) {
         </div>
     )
     }
+       
 export default Slaider;

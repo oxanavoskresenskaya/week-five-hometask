@@ -15,7 +15,7 @@ function App() {
   const deliteSeesight = (id)=>{
     let newSeesights = seesights.filter(el => el.id!==id);
     setSeesights (newSeesights);
-  }
+  };
   return (
     <div>
       <div className='container'>
